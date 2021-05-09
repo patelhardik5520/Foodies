@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Foodies</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <div class="d-block">
+            <nav class="sidebar">
+                <div class="dismiss">
+                    <i class="bi bi-x"></i>
+                </div>
+                <div class="logo">
+                    <a asp-area="" asp-page="/index"></a>
+                </div>
+
+                <ul class="list-unstyled menu-elements">
+                    <li class="active">
+                        <a class="scroll-link" href="/index">Home</a>
+                    </li>
+                    <li>
+                        <a class="scroll-link" href="/aboutUs">About us</a>
+                    </li>
+                    <li>
+                        <a class="scroll-link" href="/help">Help</a>
+                    </li>
+                    <li>
+                        <a href="#adminSection" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="adminSection">
+                            Administration
+                        </a>
+                        <ul class="collapse list-unstyled" id="adminSection">
+                            <li>
+                                <a class="scroll-link" href="/restaurants">Restaurant</a>
+                            </li>
+                            <li>
+                                <a class="scroll-link" href="/customers">Customer</a>
+                            </li>
+                            <li>
+                                <a class="scroll-link" href="/deliveryPartners">Delivery Partner</a>
+                            </li>
+                            <li>
+                                <a class="scroll-link" href="/orders">Order</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="overlay"></div>
+
+            <div class="content">
+                <a class="btn open-menu" href="#">
+                    <i class="bi bi-justify"></i>
+                </a>
+            </div>
+
+        </div>
+
+    </header>
+    <main role="main" class="pb-3">
+        <div class="text-center" id="header">
+            <h1 class="display-4">FOODIES</h1>
+        </div>
+        @RenderBody()
+    </main>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - Foodies
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

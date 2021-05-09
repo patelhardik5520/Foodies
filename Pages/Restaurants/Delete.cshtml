@@ -1,0 +1,93 @@
+﻿@page
+@model Foodies.Pages.Restaurants.DeleteModel
+
+@{
+    ViewData["Title"] = "Remove Restaurant";
+}  
+<div class="container">
+    <h1>Remove Restaurant Details</h1>
+
+    <h3>Are you sure you want to remove the restaurant details?</h3>
+    <div>
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.AddressLine1)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.AddressLine1)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.AddressLine2)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.AddressLine2)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.City)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.City)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.State)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.State)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.ZipCode)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.ZipCode)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.ContactNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.ContactNumber)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.LicenseNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.LicenseNumber)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.Cuisine)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.Cuisine)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.Rating)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.Rating)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.StartTime)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.StartTime)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.EndTime)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.EndTime)
+            </dd>
+        </dl>
+
+        <form method="post">
+            <input type="hidden" asp-for="Restaurant.RestaurantId" />
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <a asp-page="./Index">Back to Restaurant Directory</a>
+        </form>
+    </div>
+</div>

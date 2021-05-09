@@ -1,0 +1,94 @@
+﻿@page
+@model Foodies.Pages.Orders.DeleteModel
+
+@{
+    ViewData["Title"] = "Remove Order Details";
+}
+
+<div class="container">
+    <h1>Remove Order Details</h1>
+
+    <h3>Are you sure you want to remove order details?</h3>
+    <div>
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Order.Date)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Order.Date)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Order.AddressLine1)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Order.AddressLine1)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Order.AddressLine2)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Order.AddressLine2)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Order.City)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Order.City)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Order.State)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Order.State)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Order.ZipCode)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Order.ZipCode)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Order.Total)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Order.Total)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Order.Status)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Order.Status)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Order.AdditionalNote)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Order.AdditionalNote)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Order.Restaurant)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Order.Restaurant.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Order.Customer)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Order.Customer.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Order.DeliveryPartner)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Order.DeliveryPartner.Name)
+            </dd>
+        </dl>
+
+        <form method="post">
+            <input type="hidden" asp-for="Order.OrderId" />
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <a asp-page="./Index">Back to Order List</a>
+        </form>
+    </div>
+</div>

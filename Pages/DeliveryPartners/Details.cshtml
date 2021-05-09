@@ -1,0 +1,99 @@
+﻿@page
+@model Foodies.Pages.DeliveryPartners.DetailsModel
+
+@{
+    ViewData["Title"] = "Delivery Partner Details";
+}
+
+<div class="container">
+    <h1>Delivery Partner Details</h1>
+
+    <div>
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DeliveryPartner.FirstName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DeliveryPartner.FirstName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DeliveryPartner.LastName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DeliveryPartner.LastName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DeliveryPartner.ContactNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DeliveryPartner.ContactNumber)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DeliveryPartner.Email)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DeliveryPartner.Email)
+            </dd>
+        </dl>
+    </div>
+
+    <div>
+        <h2>Order Details</h2>
+        @if (Model.DeliveryPartner.Orders.Any())
+        {
+            <p>
+                <strong>@Model.DeliveryPartner.Orders.Count()</strong>
+                @if (Model.DeliveryPartner.Orders.Count() == 1)
+                {
+                    <text>Order</text>
+                }
+                else
+                {
+                    <text>Orders</text>
+                }
+                Found
+            </p>
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Order Id</th>
+                        <th>Order Date</th>
+                        <th>Order Status</th>
+                        <th class="text-right">Order Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model.DeliveryPartner.Orders)
+                    {
+                        <tr>
+                            <td>@order.OrderId</td>
+                            <td>@order.Date</td>
+                            <td>@order.Status</td>
+                            <td class="text-right">@order.Total</td>
+                            <td><a asp-page="/Orders/Details" asp-route-id="@order.OrderId">Details</a></td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th class="text-right">Total Order Total:</th>
+                        <th class="text-right">$@Model.DeliveryPartner.Orders.Sum(x => x.Total)</th>
+                    </tr>
+                </tfoot>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-warning">
+                <p>There are no orders to display</p>
+            </div>
+        }
+    </div>
+    <div>
+        <a asp-page="./Edit" asp-route-id="@Model.DeliveryPartner.DeliveryPartnerId">Edit</a> |
+        <a asp-page="./Index">Back to Delivery Partner Directory</a>
+    </div>
+</div>

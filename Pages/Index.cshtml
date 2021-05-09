@@ -1,0 +1,107 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<header>
+    <div class="jumbotron jumbotron-fluid home">
+        <div class="container">
+            <h1>Hungry? You're in the right place</h1>
+            <form action="" method="get" class="form-inline text-center">
+                <input asp-for="Query" class="form-control col-9" placeholder="Search Restaurants, your favourite Cuisine..." />
+                <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i></button>
+            </form>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="row">
+        @if (Model.SearchCompleted)
+        {
+            if (Model.Restaurant.Any())
+            {
+                @foreach (var restaurant in Model.Restaurant)
+                {
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">@restaurant.Name</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">@restaurant.Cuisine</h6>
+                            <p class="card-text">@restaurant.Address</p>
+                            <p class="card-text">
+                                @for (int i = 0; i <= restaurant.Rating; i++)
+                                {
+                                    <i class="bi bi-star-fill"></i>
+                                }
+                            </p>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="row">
+                    <div class="col">
+                        <div class="alert alert-info">
+                            No results match your term <strong>@Model.Query</strong>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            if (Model.TopRatedRestaurant.Any())
+            {
+                <p class="display-4">Top Rated Restaurants</p>
+                <div class="container">
+                    <div class="row">
+                    @foreach (var restaurant in Model.TopRatedRestaurant)
+                    {
+                        <div class="col-3 d-flex align-items-stretch">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">@restaurant.Name</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">@restaurant.Cuisine</h6>
+                                    <p class="card-text">@restaurant.Address</p>
+                                    <p class="card-text">
+                                        @for (int i = 1; i <= restaurant.Rating; i++)
+                                        {
+                                            <i class="bi bi-star-fill"></i>
+                                        }
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    </div>
+                </div>
+            }
+            if (Model.ServingNowRestaurant.Any())
+            {
+                <p class="display-4">Restaurants Serving Now</p>
+                <div class="container">
+                    <div class="row">
+                    @foreach (var restaurant in Model.ServingNowRestaurant)
+                    {
+                        <div class="col-3 d-flex align-items-stretch">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">@restaurant.Name</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">@restaurant.Cuisine</h6>
+                                    <p class="card-text">@restaurant.Address</p>
+                                    <p class="card-text">
+                                        @for (int i = 1; i <= restaurant.Rating; i++)
+                                        {
+                                            <i class="bi bi-star-fill"></i>
+                                        }
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

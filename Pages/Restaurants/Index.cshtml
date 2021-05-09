@@ -1,0 +1,80 @@
+﻿@page
+@model Foodies.Pages.Restaurants.IndexModel
+
+@{
+    ViewData["Title"] = "Restaurant Directory";
+}
+<div class="container">
+    <h1>Restaurant Directory</h1>
+
+    <p>
+        <a asp-page="Create">Enter a new Restaurant</a>
+    </p>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Restaurant[0].Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Restaurant[0].Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Restaurant[0].ContactNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Restaurant[0].LicenseNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Restaurant[0].Cuisine)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Restaurant[0].Rating)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Restaurant[0].StartTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Restaurant[0].EndTime)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Restaurant)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContactNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LicenseNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cuisine)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rating)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndTime)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.RestaurantId">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.RestaurantId">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.RestaurantId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

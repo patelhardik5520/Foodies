@@ -1,2 +1,1 @@
-# Foodies
- Food Delivery Partner using C#
+# Group 15 - Foodies

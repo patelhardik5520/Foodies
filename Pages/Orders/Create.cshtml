@@ -1,0 +1,89 @@
+﻿@page
+@model Foodies.Pages.Orders.CreateModel
+
+@{
+    ViewData["Title"] = "Enter Order Details";
+}
+<div class="container">
+    <h1>Enter Order Details</h1>
+
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Order.Date" class="control-label"></label>
+                    <input asp-for="Order.Date" class="form-control" />
+                    <span asp-validation-for="Order.Date" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Order.AddressLine1" class="control-label"></label>
+                    <input asp-for="Order.AddressLine1" class="form-control" />
+                    <span asp-validation-for="Order.AddressLine1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Order.AddressLine2" class="control-label"></label>
+                    <input asp-for="Order.AddressLine2" class="form-control" />
+                    <span asp-validation-for="Order.AddressLine2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Order.City" class="control-label"></label>
+                    <input asp-for="Order.City" class="form-control" />
+                    <span asp-validation-for="Order.City" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Order.State" class="control-label"></label>
+                    <input asp-for="Order.State" class="form-control" />
+                    <span asp-validation-for="Order.State" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Order.ZipCode" class="control-label"></label>
+                    <input asp-for="Order.ZipCode" class="form-control" />
+                    <span asp-validation-for="Order.ZipCode" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Order.Total" class="control-label"></label>
+                    <input asp-for="Order.Total" class="form-control" />
+                    <span asp-validation-for="Order.Total" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Order.Status" class="control-label"></label>
+                    <select asp-for="Order.Status" class="form-control">
+                        <option value="">Choose the Order Status</option>
+                        <option value="Processing">Processing</option>
+                        <option value="On the way">On the way</option>
+                        <option value="Delivered">Italian</option>
+                    </select>
+                    <span asp-validation-for="Order.Status" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Order.AdditionalNote" class="control-label"></label>
+                    <textarea rows="7" asp-for="Order.AdditionalNote" class="form-control"></textarea>
+                    <span asp-validation-for="Order.AdditionalNote" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Order.RestaurantId" class="control-label"></label>
+                    <select asp-for="Order.RestaurantId" class="form-control" asp-items="ViewBag.RestaurantId"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Order.CustomerId" class="control-label"></label>
+                    <select asp-for="Order.CustomerId" class="form-control" asp-items="ViewBag.CustomerId"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Order.DeliveryPartnerId" class="control-label"></label>
+                    <select asp-for="Order.DeliveryPartnerId" class="form-control" asp-items="ViewBag.DeliveryPartnerId"></select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-page="Index">Back to Order List</a>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

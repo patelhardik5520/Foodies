@@ -1,0 +1,46 @@
+﻿@page
+@model Foodies.Pages.DeliveryPartners.DeleteModel
+
+@{
+    ViewData["Title"] = "Remove Delivery Partner Details";
+}
+
+<div class="container">
+    <h1>Remove Delivery Partner Details</h1>
+
+    <h3>Are you sure you want to remove delivery partner details?</h3>
+    <div>
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DeliveryPartner.FirstName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DeliveryPartner.FirstName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DeliveryPartner.LastName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DeliveryPartner.LastName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DeliveryPartner.ContactNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DeliveryPartner.ContactNumber)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DeliveryPartner.Email)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DeliveryPartner.Email)
+            </dd>
+        </dl>
+
+        <form method="post">
+            <input type="hidden" asp-for="DeliveryPartner.DeliveryPartnerId" />
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <a asp-page="./Index">Back to Delivery Partner Directory</a>
+        </form>
+    </div>
+</div>

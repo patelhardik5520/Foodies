@@ -1,0 +1,146 @@
+﻿@page
+@model Foodies.Pages.Restaurants.DetailsModel
+
+@{
+    ViewData["Title"] = "Restaurant Details";
+}
+
+<div class="container">
+    <h1>Restaurant Details</h1>
+
+    <div>
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.AddressLine1)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.AddressLine1)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.AddressLine2)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.AddressLine2)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.City)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.City)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.State)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.State)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.ZipCode)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.ZipCode)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.ContactNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.ContactNumber)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.LicenseNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.LicenseNumber)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.Cuisine)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.Cuisine)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.Rating)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.Rating)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.StartTime)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.StartTime)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.EndTime)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.EndTime)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <h2>Order Details</h2>
+        @if (Model.Restaurant.Orders.Any())
+        {
+            <p>
+                <strong>@Model.Restaurant.Orders.Count()</strong>
+                @if (Model.Restaurant.Orders.Count() == 1)
+                {
+                    <text>Order</text>
+                }
+                else
+                {
+                    <text>Orders</text>
+                }
+                Found
+            </p>
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Order Id</th>
+                        <th>Order Date</th>
+                        <th>Order Status</th>
+                        <th class="text-right">Order Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model.Restaurant.Orders)
+                    {
+                        <tr>
+                            <td>@order.OrderId</td>
+                            <td>@order.Date</td>
+                            <td>@order.Status</td>
+                            <td class="text-right">@order.Total</td>
+                            <td><a asp-page="/Orders/Details" asp-route-id="@order.OrderId">Details</a></td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th class="text-right">Total Order Total:</th>
+                        <th class="text-right">$@Model.Restaurant.Orders.Sum(x => x.Total)</th>
+                    </tr>
+                </tfoot>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-warning">
+                <p>There are no orders to display</p>
+            </div>
+        }
+    </div>
+    <div>
+        <a asp-page="./Edit" asp-route-id="@Model.Restaurant.RestaurantId">Edit</a> |
+        <a asp-page="./Index">Back to Restaurant Directory</a>
+    </div>
+</div>

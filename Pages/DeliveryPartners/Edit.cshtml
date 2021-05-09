@@ -1,0 +1,49 @@
+﻿@page
+@model Foodies.Pages.DeliveryPartners.EditModel
+
+@{
+    ViewData["Title"] = "Edit Delivery Partner Details";
+}
+
+<div class="container">
+    <h1>Edit Delivery Partner Details</h1>
+
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="DeliveryPartner.DeliveryPartnerId" />
+                <div class="form-group">
+                    <label asp-for="DeliveryPartner.FirstName" class="control-label"></label>
+                    <input asp-for="DeliveryPartner.FirstName" class="form-control" />
+                    <span asp-validation-for="DeliveryPartner.FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DeliveryPartner.LastName" class="control-label"></label>
+                    <input asp-for="DeliveryPartner.LastName" class="form-control" />
+                    <span asp-validation-for="DeliveryPartner.LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DeliveryPartner.ContactNumber" class="control-label"></label>
+                    <input asp-for="DeliveryPartner.ContactNumber" class="form-control" />
+                    <span asp-validation-for="DeliveryPartner.ContactNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DeliveryPartner.Email" class="control-label"></label>
+                    <input asp-for="DeliveryPartner.Email" class="form-control" />
+                    <span asp-validation-for="DeliveryPartner.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-page="./Index">Back to Delivery Partner Directory</a>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
